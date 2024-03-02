@@ -107,12 +107,9 @@ class UnetWrapper(torch.nn.Module):
 
 def initialize_compiler_overrides():
 
-    os.environ["TT_BACKEND_TIMEOUT"] = "0"
     os.environ["PYBUDA_MAX_GRAPH_CUT_RETRY"] = "2000"
     os.environ["PYBUDA_PAD_SPARSE_MM_WEIGHT_MM"] = "{10:12, 20:24, 30:32, 40:48, 60:64}"
     os.environ["PYBUDA_FORCE_CONV_MULTI_OP_FRACTURE"] = "1"
-    os.environ["PYBUDA_RIBBON2"] = "1"
-    os.environ["PYBUDA_DECOMPOSE_SIGMOID"] = "1"
 
     compiler_cfg = pybuda.config._get_global_compiler_config()
     compiler_cfg.enable_tvm_constant_prop = True
